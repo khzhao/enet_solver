@@ -16,10 +16,10 @@ target_link_libraries(
   CONAN_PKG::eigen
 )
 
-pybind11_add_module(bindings MODULE bindings.cpp)
+pybind11_add_module(enet_bindings MODULE bindings.cpp)
 
 target_link_libraries(
-  bindings
+  enet_bindings
   PUBLIC
   enet_solver
 )

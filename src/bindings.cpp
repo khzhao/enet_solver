@@ -1,5 +1,6 @@
 #include "enet_solver/enet_solver.h"
 
+#include "pybind11/eigen.h"
 #include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
 
@@ -47,7 +48,11 @@ enet_solver::ENetResult solveENet(py::array_t<double> XTX,
   return result;
 }
 
-PYBIND11_MODULE(bindings, m) {
+PYBIND11_MODULE(enet_bindings, m) {
+  py::class_<enet_solver::ENetResult>(m, "ENetResult")
+      .def_readonly("converged", &enet_solver::ENetResult::converged)
+      .def_readonly("beta_matrix", &enet_solver::ENetResult::beta_matrix);
+
   m.doc() = "ElasticNet Solver";
   m.def("solveENet", &solveENet, "XTX"_a, "XTY"_a, "l2"_a, "l1s"_a,
         "max_iter"_a = 1000, "tol"_a = 1e-9);
