@@ -52,9 +52,9 @@ public:
 
   double softThreshold(double rho, double lambda) {
     if (rho > lambda) {
-      return rho;
+      return rho - lambda;
     } else if (rho < -lambda) {
-      return rho;
+      return rho + lambda;
     }
     return 0;
   }
