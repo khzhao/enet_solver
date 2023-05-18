@@ -1,7 +1,5 @@
 #include "enet_solver.h"
 
-#include <iostream>
-
 namespace enet_solver {
 
 ENetResult ENetSolver::solve(int max_iter, double tol) {
